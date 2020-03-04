@@ -1,0 +1,11 @@
+[Unit]
+Description=Greef - monitoring for an aquarium
+After=network.target
+
+[Service]
+WorkingDirectory=/home/joe/.go/src/github.com/vacovsky/greef
+ExecStart=/home/joe/.go/src/github.com/vacovsky/greef/greef
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

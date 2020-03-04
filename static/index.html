@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>gReef</title>
+		<script src="/js/jquery/jquery.min.js"></script>
+		<script src="/js/weld/weld.min.js"></script>
+		<script src="/js/moment/moment.min.js"></script>
+		<script src="/js/chartjs/Chart.min.js"></script>
+		<script src="/js/app.js"></script>
+		<link rel="stylesheet" href="/style/simple-grid/simple-grid.min.css">
+		<link rel="stylesheet" href="/style/style.css">
+
+		<link rel="stylesheet" href="/style/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="inner">
+				<center><h2>gReef Tank Monitor</h2></center>
+
+				<div style="display:flex;">
+					<div class="col-6">
+						<strong>&nbsp; Aquarium Water</strong>
+						<hr/>
+						<p>
+							&nbsp; Temperature:
+							<span style="float:right;" id="#last-water-temp"></span>
+						</p>
+						<p>
+							&nbsp; pH:
+							<span style="float:right;" id="#last-water-ph"></span>
+						</p>
+						<p>
+							&nbsp; TDS:
+							<span style="float:right;" id="#last-water-tdsppm"></span>
+						</p>
+
+						</hr>
+						<strong>&nbsp; Ambient Air</strong>
+						<hr/>
+						<p>
+							&nbsp; Temperature:
+							<span style="float:right;" id="#last-air-temp"></span>
+						</p>
+						<p>
+							&nbsp; Humidity:
+							<span style="float:right;" id="#last-humidity"></span>
+						</p>
+						<p>
+							&nbsp; CO₂:
+							<span style="float:right;" id="#last-air-co2ppm"></span>
+						</p>
+						</hr>
+						<strong>&nbsp; Lighting</strong>
+						<hr/>
+						<p>
+							&nbsp; Light Intensity (at glass):
+							<span style="float:right;" id="#last-lighting"></span>
+						</p>
+
+						<hr/>
+						<p>
+							<canvas id="lighting-chart"></canvas>
+						</p>
+
+					</div>
+					<div class="col-6">
+						<p>
+							<canvas id="temp-chart"></canvas>
+						</p>
+						<p>
+							<canvas id="ph-chart"></canvas>
+						</p>
+						<p>
+							<canvas id="tds-chart"></canvas>
+						</p>
+						<p>
+							<canvas id="co2-chart"></canvas>
+						</p>
+					</div>
+				</div>
+				<hr/>
+				<h5>
+					<center>
+						<img src="/image/camera.png" style="height: 1em;">
+						<a href="/video"
+                                    onclick="window.open(this.href,
+                                    'targetWindow',
+                                   `toolbar=no,
+                                    location=no,
+                                    status=no,
+                                    menubar=no,
+                                    scrollbars=yes,
+                                    resizable=yes,
+                                    width=543,
+                                    height=407`);
+                                    return false;">Live Tank Camera
+                        </a>
+
+					</center>
+				</h5>
+			</div>
+		</div>
+		<script>
+			Chart.defaults.global.title.fontColor = "#bbb";
+		</script>
+
+	</body>
+</html>

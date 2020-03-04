@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
+device	display.py	/^device = ssd1306(serial, rotate=0)$/;"	v
+displayData	display.py	/^    displayData = json.loads(apicli.read_latest_vals())$/;"	v
+displayData	display.py	/^displayData =  None$/;"	v
+displayData	display.py	/^displayData = ""$/;"	v
+displayData	display.py	/^displayData = $/;"	v
+displayData	display.py	/^displayData = None$/;"	v
+displayData	display.py	/^displayData = dict()$/;"	v
+read_latest_vals	apicli.py	/^def read_latest_vals() {$/;"	f
+read_latest_vals	apicli.py	/^def read_latest_vals():$/;"	f
+serial	display.py	/^serial = i2c(port=1, address=0x3C)$/;"	v
