@@ -10,7 +10,7 @@ import (
 func main() {
 	for {
 		calibrate()
-		time.Sleep(time.Second * 5)
+		time.Sleep(time.Millisecond * 250)
 	}
 }
 
@@ -20,6 +20,7 @@ var (
 	tChannel    = 1
 	pChannel    = 0
 	vref        = 5.0
+	data        = []float64{}
 )
 
 func calibrate() {
@@ -27,12 +28,17 @@ func calibrate() {
 	// ReadPH ADC channel and return pH detected by the probe
 	pVolts, _ := mcp3008.ReadChannel(pChannel, spiDev, vref)
 
-	time.Sleep(time.Second * 1)
-	// ReadWaterTempF ADC channel and return temperature detected by the probe
-	tVolts, _ := mcp3008.ReadChannel(tChannel, spiDev, vref)
-	time.Sleep(time.Second * 1)
-	testVolts, _ := mcp3008.ReadChannel(testChannel, spiDev, vref)
+	data = append(data, pVolts)
+	time.Sleep(time.Millisecond * 100)
 
-	log.Println("Test volts:\t", testVolts, "\t\tpH volts:\t", pVolts, " ----- ", "\t\tTemp volts:\t", tVolts)
+	log.Println("Average:", average(), "\t\tpH volts:\t", pVolts)
 
+}
+
+func average() float64 {
+	sum := 0.0
+	for _, i := range data {
+		sum += i
+	}
+	return (sum / float64(len(data)))
 }

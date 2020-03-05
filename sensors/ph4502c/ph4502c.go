@@ -24,5 +24,6 @@ func parseTemp(t float64) float64 {
 
 func parsePH(v float64) float64 {
 	// y=mx+b DO YOUR OWN CALIBRATION! return (-5.70*v + 21.34)
-	return (-6.2*v + 29.8)
+	// return (-6.2*v + 29.8)
+	return (-6*v + 30.1)
 }
