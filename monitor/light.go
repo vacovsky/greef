@@ -30,7 +30,7 @@ func monitorAmbientLight() {
 				lastIndex = 0
 			}
 		}
-		avg := average(lastVals)
+		avg := helpers.mean(lastVals)
 		mux.Lock()
 		currentEnvironment.AmbientLight = avg
 		mux.Unlock()

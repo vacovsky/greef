@@ -24,7 +24,7 @@ func monitorWaterTemperature() {
 
 func monitorWaterPH() {
 	lastVals := []float64{}
-	lastValsMaxLen := 5000
+	lastValsMaxLen := 500
 	lastph := 0.0
 	lastIndex := 0
 
@@ -39,12 +39,12 @@ func monitorWaterPH() {
 				lastIndex = 0
 			}
 		}
-		avg := average(lastVals)
+		avg := helpers.median(lastVals)
 		mux.Lock()
 		currentEnvironment.WaterPH = avg
 		mux.Unlock()
 		fmt.Println("pH:\t\t\t", lastph)
-		time.Sleep(time.Millisecond * 250)
+		time.Sleep(time.Millisecond * 500)
 	}
 }
 
@@ -66,7 +66,7 @@ func monitorWaterTds() {
 				lastIndex = 0
 			}
 		}
-		avg := average(lastVals)
+		avg := helpers.median(lastVals)
 		mux.Lock()
 		currentEnvironment.WaterTdsPpm = avg
 		mux.Unlock()

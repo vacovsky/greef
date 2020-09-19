@@ -3,6 +3,10 @@ Description=Greef - monitoring for an aquarium
 After=network.target
 
 [Service]
+Environment=GREEF_PH1=6.86
+Environment=GREEF_PH1VOLTAGE=4.060034658394608
+Environment=GREEF_PH2=9.18
+Environment=GREEF_PH2VOLTAGE=3.6715273141967066
 WorkingDirectory=/home/joe/.go/src/github.com/vacovsky/greef
 ExecStart=/home/joe/.go/src/github.com/vacovsky/greef/greef
 Restart=always

@@ -31,7 +31,10 @@ func Start() {
 		go monitorAmbientLight()
 		go monitorAmbientSumpLight()
 		go monitorWaterTemperature()
-		go monitorWaterTds()
+
+		// TODO: TDS probe voltage interferes with ph probe.
+		// The power for one must be disabled while other is active.
+		// go monitorWaterTds()
 	}()
 
 	go func() {

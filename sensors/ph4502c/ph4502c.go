@@ -1,8 +1,29 @@
 package ph4502c
 
 import (
+	"log"
+	"os"
+	"strconv"
+
 	"github.com/vacovsky/greef/sensors/mcp3008"
 )
+
+var (
+	ph1, voltage1, ph2, voltage2 float64
+)
+
+func init() {
+	var err error
+	ph1, err = strconv.ParseFloat(os.Getenv("GREEF_PH1"), 64)
+	voltage1, err = strconv.ParseFloat(os.Getenv("GREEF_PH1VOLTAGE"), 64)
+
+	ph2, err = strconv.ParseFloat(os.Getenv("GREEF_PH2"), 64)
+	voltage2, err = strconv.ParseFloat(os.Getenv("GREEF_PH2VOLTAGE"), 64)
+
+	if err != nil {
+		log.Fatal("Enable to load PH calibration values from environment variables.  See documentation to address this issue.")
+	}
+}
 
 // ReadPH ADC channel and return pH detected by the probe
 func ReadPH(channel int, spiDev string, vref float64) float64 {
@@ -23,7 +44,10 @@ func parseTemp(t float64) float64 {
 }
 
 func parsePH(v float64) float64 {
+
+	slope, yIntercept := helpers.slopeIntercept(ph1, voltage1, ph2, voltage2)
+	return (slope*v + yIntercept)
+
 	// y=mx+b DO YOUR OWN CALIBRATION! return (-5.70*v + 21.34)
-	// return (-6.2*v + 29.8)
-	return (-6*v + 30.1)
+	// return (-5.972*v + 31.105)
 }
