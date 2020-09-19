@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-func mean(vals []float64) float64 {
+func Mean(vals []float64) float64 {
 	sum := 0.0
 	for _, i := range vals {
 		sum += i
@@ -13,7 +13,7 @@ func mean(vals []float64) float64 {
 	return (sum / float64(len(vals)))
 }
 
-func median(vals []float64) float64 {
+func Median(vals []float64) float64 {
 	if len(vals) < 1 {
 		return 0.0
 	}
@@ -31,14 +31,14 @@ func median(vals []float64) float64 {
 	return vals[0]
 }
 
-func removeFromSlice(s []float64, i int) []float64 {
+func RemoveFromSlice(s []float64, i int) []float64 {
 	newSlice := []float64{}
 	found := false
 
 	for _, v := range s {
 		if s[i] != v {
 			newSlice = append(newSlice, v)
-		} else if almostEqual(s[i], v) && !found {
+		} else if AlmostEqual(s[i], v) && !found {
 			newSlice = append(newSlice, v)
 			found = true
 		}
@@ -46,12 +46,12 @@ func removeFromSlice(s []float64, i int) []float64 {
 	return newSlice
 }
 
-func almostEqual(a, b float64) bool {
+func AlmostEqual(a, b float64) bool {
 	float64EqualityThreshold := 0.001
 	return math.Abs(a-b) <= float64EqualityThreshold
 }
 
-func slopeIntercept(known1, voltage1, known2, voltage2 float64) (float64, float64) {
+func SlopeIntercept(known1, voltage1, known2, voltage2 float64) (float64, float64) {
 
 	slope, yIntercept := 0.0, 0.0
 

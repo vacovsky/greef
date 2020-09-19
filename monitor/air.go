@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/vacovsky/greef/helpers"
 	"github.com/vacovsky/greef/sensors/dht11"
 )
 
@@ -23,7 +24,7 @@ func monitorAmbientAir() {
 		}
 		hum, temp := dht11.GetAmbientInfoF(airPin)
 
-		if almostEqual(hum, 0.0) && almostEqual(temp, 32.0) {
+		if helpers.AlmostEqual(hum, 0.0) && helpers.AlmostEqual(temp, 32.0) {
 			hum, temp = currentEnvironment.AmbientHumidity, currentEnvironment.AmbientAirTemperature
 		}
 		mux.Lock()

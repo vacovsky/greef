@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/vacovsky/greef/helpers"
 	"github.com/vacovsky/greef/sensors/photoresistor"
 )
 
@@ -30,7 +31,7 @@ func monitorAmbientLight() {
 				lastIndex = 0
 			}
 		}
-		avg := helpers.mean(lastVals)
+		avg := helpers.Mean(lastVals)
 		mux.Lock()
 		currentEnvironment.AmbientLight = avg
 		mux.Unlock()

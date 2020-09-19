@@ -5,6 +5,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/vacovsky/greef/helpers"
 	"github.com/vacovsky/greef/sensors/ds18b20"
 	"github.com/vacovsky/greef/sensors/ks0429"
 	"github.com/vacovsky/greef/sensors/ph4502c"
@@ -39,7 +40,7 @@ func monitorWaterPH() {
 				lastIndex = 0
 			}
 		}
-		avg := helpers.median(lastVals)
+		avg := helpers.Median(lastVals)
 		mux.Lock()
 		currentEnvironment.WaterPH = avg
 		mux.Unlock()
@@ -66,7 +67,7 @@ func monitorWaterTds() {
 				lastIndex = 0
 			}
 		}
-		avg := helpers.median(lastVals)
+		avg := helpers.Median(lastVals)
 		mux.Lock()
 		currentEnvironment.WaterTdsPpm = avg
 		mux.Unlock()

@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/vacovsky/greef/helpers"
 	"github.com/vacovsky/greef/sensors/mcp3008"
 )
 
@@ -45,7 +46,7 @@ func parseTemp(t float64) float64 {
 
 func parsePH(v float64) float64 {
 
-	slope, yIntercept := helpers.slopeIntercept(ph1, voltage1, ph2, voltage2)
+	slope, yIntercept := helpers.SlopeIntercept(ph1, voltage1, ph2, voltage2)
 	return (slope*v + yIntercept)
 
 	// y=mx+b DO YOUR OWN CALIBRATION! return (-5.70*v + 21.34)
